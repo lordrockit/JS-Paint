@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>JS-Paint source</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+	font-weight: bold;
+}
+.sc1 {
+	color: #0000FF;
+}
+.sc3 {
+	color: #FF0000;
+}
+.sc4 {
+}
+.sc6 {
+	font-weight: bold;
+	color: #8000FF;
+}
+.sc7 {
+	font-weight: bold;
+	color: #8000FF;
+}
+.sc8 {
+}
+.sc11 {
+	color: #0000FF;
+}
+.sc21 {
+	background: #A6CAF0;
+}
+.sc26 {
+}
+.sc40 {
+}
+.sc41 {
+	background: #F2F4FF;
+}
+.sc43 {
+	color: #008000;
+	background: #F2F4FF;
+}
+.sc45 {
+	color: #FF0000;
+	background: #F2F4FF;
+}
+.sc46 {
+	background: #F2F4FF;
+}
+.sc47 {
+	font-weight: bold;
+	font-style: italic;
+	color: #000080;
+	background: #F2F4FF;
+}
+.sc48 {
+	color: #808080;
+	background: #F2F4FF;
+}
+.sc49 {
+	color: #808080;
+	background: #F2F4FF;
+}
+.sc50 {
+	font-weight: bold;
+	background: #F2F4FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc21">&lt;!</span><span class="sc26">DOCTYPE HTML</span><span class="sc21">&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;meta</span><span class="sc8"> </span><span class="sc3">name</span><span class="sc8">=</span><span class="sc6">"robots"</span><span class="sc8"> </span><span class="sc3">content</span><span class="sc8">=</span><span class="sc6">"noindex"</span><span class="sc1">&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;html&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;head&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;title&gt;</span><span class="sc0">
+      Js Paint by lordrockit
+    </span><span class="sc1">&lt;/title&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;style&gt;</span><span class="sc0">
+      body {
+      text-align: center;
+        margin: 0px;
+        padding: 0px;
+      }
+    </span><span class="sc1">&lt;/style&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;/head&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;body</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"text-align: center;"</span><span class="sc1">&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;div</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"background-color: #6076DE"</span><span class="sc1">&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;h1&gt;</span><span class="sc0">JS Paint</span><span class="sc1">&lt;/h1&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;/div&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;table</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"text-align: center;"</span><span class="sc1">&gt;&lt;td</span><span class="sc8"> 
+</span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"width: 40%;
+  text-align: center;
+  border: 1px solid #000000; height:100%; 
+  background-color: #ffffff; vertical-align: top;"</span><span class="sc1">&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;div</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"text-align: center"</span><span class="sc1">&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;div</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"background-color: #6076DE"</span><span class="sc1">&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;h1&gt;</span><span class="sc0">Tools</span><span class="sc1">&lt;/h1&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;/div&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    Dimensions</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    width</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"widthS"</span><span class="sc8"> </span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc8"> </span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc1">&gt;&lt;input</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"widthT"</span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"text"</span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc3">size</span><span class="sc8">=</span><span class="sc6">"5"</span><span class="sc1">&gt;&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    height</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"heightS"</span><span class="sc8"> </span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc8"> </span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"500"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"500"</span><span class="sc1">&gt;&lt;input</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"heightT"</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"text"</span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"500"</span><span class="sc3">size</span><span class="sc8">=</span><span class="sc6">"5"</span><span class="sc1">&gt;&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'write'</span><span class="sc1">&gt;</span><span class="sc0">pencil</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'clear'</span><span class="sc1">&gt;</span><span class="sc0">eraser</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'reset'</span><span class="sc1">&gt;</span><span class="sc0">clear</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'save'</span><span class="sc1">&gt;</span><span class="sc0">save</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    Brush size</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"1"</span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"10"</span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"6"</span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'draw_size'</span><span class="sc1">&gt;&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    Brush color:
+    </span><span class="sc1">&lt;canvas</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"colorPrev"</span><span class="sc8"> </span><span class="sc3">width</span><span class="sc8">=</span><span class="sc6">"10"</span><span class="sc8"> </span><span class="sc3">height</span><span class="sc8">=</span><span class="sc6">"10"</span><span class="sc8">
+</span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"border:1px solid #000000;"</span><span class="sc1">&gt;</span><span class="sc0">      
+</span><span class="sc1">&lt;/canvas&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc7">'make_ref'</span><span class="sc1">&gt;</span><span class="sc0">Make a referance point</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;button</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"get_ref"</span><span class="sc1">&gt;</span><span class="sc0">Go to last referance point</span><span class="sc1">&lt;/button&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;a</span><span class="sc8"> </span><span class="sc3">href</span><span class="sc8">=</span><span class="sc6">"about.html"</span><span class="sc1">&gt;&lt;button&gt;</span><span class="sc0">about this tool</span><span class="sc1">&lt;/button&gt;&lt;/a&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;/div&gt;&lt;/td&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;td</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">" width: 60%; height:100%; text-align: center; border: 1px solid #000000;
+    background-color: #ffffff;
+    vertical-align: top;"</span><span class="sc1">&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;div</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"background-color: #6076DE"</span><span class="sc1">&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;h1&gt;</span><span class="sc0">Draw</span><span class="sc1">&lt;/h1&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;/div&gt;</span><span class="sc0">
+    </span><span class="sc1">&lt;canvas</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"myCanvas"</span><span class="sc8"> </span><span class="sc3">width</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc8"> </span><span class="sc3">height</span><span class="sc8">=</span><span class="sc6">"500"</span><span class="sc8">
+</span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"border:2px solid #000000;"</span><span class="sc1">&gt;&lt;/canvas&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;/td&gt;</span><span class="sc0">
+
+</span><span class="sc1">&lt;td</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">" width: 60%;  height:100%; text-align: center; border: 1px solid #000000; background-color: #ffffff;
+ vertical-align: top;"</span><span class="sc1">&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;div</span><span class="sc8"> </span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"background-color: #6076DE"</span><span class="sc1">&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;h1&gt;</span><span class="sc0">Color Picker</span><span class="sc1">&lt;/h1&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;/div&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"red"</span><span class="sc8"> </span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc8"> </span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"255"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc1">&gt;</span><span class="sc0">red</span><span class="sc1">&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"green"</span><span class="sc8"> </span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc8"> </span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"255"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc1">&gt;</span><span class="sc0">green</span><span class="sc1">&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"range"</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"blue"</span><span class="sc8"> </span><span class="sc4">min</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc8"> </span><span class="sc4">max</span><span class="sc8">=</span><span class="sc6">"255"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"0"</span><span class="sc1">&gt;</span><span class="sc0">blue</span><span class="sc1">&lt;/input&gt;&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;input</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"hexCode"</span><span class="sc8"> </span><span class="sc3">type</span><span class="sc8">=</span><span class="sc6">"text"</span><span class="sc8"> </span><span class="sc3">value</span><span class="sc8">=</span><span class="sc6">"hex"</span><span class="sc1">&gt;</span><span class="sc0">hexcode</span><span class="sc1">&lt;/input&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;br</span><span class="sc11">/&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;canvas</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"colorPicker"</span><span class="sc8"> </span><span class="sc3">width</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc8"> </span><span class="sc3">height</span><span class="sc8">=</span><span class="sc6">"100"</span><span class="sc8">
+</span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"border:1px solid #000000;"</span><span class="sc1">&gt;&lt;/canvas&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;/td&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;canvas</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"referance"</span><span class="sc8"> </span><span class="sc3">width</span><span class="sc8">=</span><span class="sc6">"400"</span><span class="sc8"> </span><span class="sc3">height</span><span class="sc8">=</span><span class="sc6">"100"</span><span class="sc8">
+</span><span class="sc3">style</span><span class="sc8">=</span><span class="sc6">"border:1px solid #000000;"</span><span class="sc1">&gt;&lt;/canvas&gt;</span><span class="sc0">
+  </span><span class="sc1">&lt;script&gt;</span><span class="sc40">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">mousePosx</span><span class="sc50">;</span><span class="sc41"> 
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">mousePosy</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">clicking</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">draw</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">true</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">brushSize</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc45">6</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">color</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"#"</span><span class="sc50">+</span><span class="sc46">hex</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">hex</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"#FF0000"</span><span class="sc50">;</span><span class="sc41">
+
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">pencil</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'write'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">eracer</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'clear'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">clear</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'reset'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">save</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'save'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">makeRef</span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'make_ref'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">getRef</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'get_ref'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">hexC</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'hexCode'</span><span class="sc50">);</span><span class="sc41"> 
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">widthS</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'widthS'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">widthT</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'widthT'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">heightS</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'heightS'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">heightT</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'heightT'</span><span class="sc50">);</span><span class="sc41">
+
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">canvas</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'myCanvas'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">ctx</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas.getContext</span><span class="sc50">(</span><span class="sc49">'2d'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">canvas2</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'colorPrev'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">ctx2</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas2.getContext</span><span class="sc50">(</span><span class="sc49">'2d'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">canvas3</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'colorPicker'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">ctx3</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas3.getContext</span><span class="sc50">(</span><span class="sc49">'2d'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">canvas4</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'referance'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">ctx4</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas4.getContext</span><span class="sc50">(</span><span class="sc49">'2d'</span><span class="sc50">);</span><span class="sc41">
+
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">red</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'red'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">green</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'green'</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">blue</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'blue'</span><span class="sc50">);</span><span class="sc41">
+
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">grd</span><span class="sc50">=</span><span class="sc46">ctx3.createLinearGradient</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">400</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc48">"black"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.2</span><span class="sc50">,</span><span class="sc48">"red"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.3</span><span class="sc50">,</span><span class="sc48">"orange"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.4</span><span class="sc50">,</span><span class="sc48">"yellow"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.5</span><span class="sc50">,</span><span class="sc48">"green"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.6</span><span class="sc50">,</span><span class="sc48">"blue"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.7</span><span class="sc50">,</span><span class="sc48">"indigo"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">0.8</span><span class="sc50">,</span><span class="sc48">"violet"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">grd.addColorStop</span><span class="sc50">(</span><span class="sc45">1</span><span class="sc50">,</span><span class="sc48">"white"</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">ctx3.fillStyle</span><span class="sc50">=</span><span class="sc46">grd</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc46">ctx3.fillRect</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc46">canvas3.width</span><span class="sc50">,</span><span class="sc46">canvas3.height</span><span class="sc50">);</span><span class="sc41">
+
+</span><span class="sc46">window.setInterval</span><span class="sc50">(</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+  </span><span class="sc46">ctx2.fillStyle</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">color</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc46">ctx2.fillRect</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">10</span><span class="sc50">,</span><span class="sc45">10</span><span class="sc50">);</span><span class="sc41">
+  </span><span class="sc46">hex</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">rgbToHex</span><span class="sc50">(</span><span class="sc46">R</span><span class="sc50">,</span><span class="sc46">G</span><span class="sc50">,</span><span class="sc46">B</span><span class="sc50">);</span><span class="sc41">
+  </span><span class="sc46">color</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"#"</span><span class="sc50">+</span><span class="sc46">hex</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc46">hexC.value</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">color</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc47">if</span><span class="sc50">(</span><span class="sc46">canvas.height</span><span class="sc41"> </span><span class="sc50">!=</span><span class="sc41"> </span><span class="sc46">heightS.value</span><span class="sc41"> </span><span class="sc50">||</span><span class="sc41"> </span><span class="sc46">canvas.width</span><span class="sc41"> </span><span class="sc50">!=</span><span class="sc41"> </span><span class="sc46">widthS.value</span><span class="sc50">){</span><span class="sc41">
+  </span><span class="sc46">canvas.width</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">widthS.value</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc46">widthT.value</span><span class="sc50">=</span><span class="sc46">widthS.value</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc46">canvas.height</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">heightS.value</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc46">heightT.value</span><span class="sc50">=</span><span class="sc46">heightS.value</span><span class="sc50">;</span><span class="sc41">
+  </span><span class="sc50">}</span><span class="sc41">
+  </span><span class="sc47">if</span><span class="sc50">(</span><span class="sc46">clicking</span><span class="sc50">){</span><span class="sc41">
+    </span><span class="sc47">if</span><span class="sc50">(</span><span class="sc46">draw</span><span class="sc50">){</span><span class="sc41">
+      </span><span class="sc46">ctx.fillStyle</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">color</span><span class="sc50">;</span><span class="sc41">
+      </span><span class="sc46">ctx.fillRect</span><span class="sc50">(</span><span class="sc46">mousePosx</span><span class="sc50">-(</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">),</span><span class="sc46">mousePosy</span><span class="sc50">-</span><span class="sc46">brushSize</span><span class="sc50">,</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">,</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc47">else</span><span class="sc50">{</span><span class="sc41">
+      </span><span class="sc46">ctx.clearRect</span><span class="sc50">(</span><span class="sc46">mousePosx</span><span class="sc50">-(</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">),</span><span class="sc46">mousePosy</span><span class="sc50">-</span><span class="sc46">brushSize</span><span class="sc50">,</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">,</span><span class="sc46">brushSize</span><span class="sc50">*</span><span class="sc45">2</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+  </span><span class="sc50">}</span><span class="sc41">
+</span><span class="sc50">},</span><span class="sc45">1</span><span class="sc50">);</span><span class="sc41">
+</span><span class="sc46">window.setInterval</span><span class="sc50">(</span><span class="sc47">function</span><span class="sc50">(){</span><span class="sc41">
+    </span><span class="sc46">R</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'red'</span><span class="sc50">).</span><span class="sc46">value</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">G</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'green'</span><span class="sc50">).</span><span class="sc46">value</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">B</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'blue'</span><span class="sc50">).</span><span class="sc46">value</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">brushSize</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc49">'draw_size'</span><span class="sc50">).</span><span class="sc46">value</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc47">if</span><span class="sc50">(</span><span class="sc46">canvas4.height</span><span class="sc41"> </span><span class="sc50">!=</span><span class="sc41"> </span><span class="sc46">canvas.height</span><span class="sc41"> </span><span class="sc50">||</span><span class="sc41"> </span><span class="sc46">canvas4.width</span><span class="sc41"> </span><span class="sc50">!=</span><span class="sc41"> </span><span class="sc46">canavas.width</span><span class="sc50">){</span><span class="sc41">
+    </span><span class="sc46">canvas4.width</span><span class="sc50">=</span><span class="sc46">canvas.width</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">canvas4.height</span><span class="sc50">=</span><span class="sc46">canvas.height</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">canvas4.style.display</span><span class="sc50">=</span><span class="sc48">"none"</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+</span><span class="sc50">},</span><span class="sc45">1</span><span class="sc50">);</span><span class="sc41">
+
+    </span><span class="sc47">function</span><span class="sc41"> </span><span class="sc46">rgbToHex</span><span class="sc50">(</span><span class="sc46">R</span><span class="sc50">,</span><span class="sc46">G</span><span class="sc50">,</span><span class="sc46">B</span><span class="sc50">){</span><span class="sc41">
+    </span><span class="sc47">return</span><span class="sc41"> </span><span class="sc46">toHex</span><span class="sc50">(</span><span class="sc46">R</span><span class="sc50">)+</span><span class="sc46">toHex</span><span class="sc50">(</span><span class="sc46">G</span><span class="sc50">)+</span><span class="sc46">toHex</span><span class="sc50">(</span><span class="sc46">B</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+    </span><span class="sc47">function</span><span class="sc41"> </span><span class="sc46">toHex</span><span class="sc50">(</span><span class="sc46">n</span><span class="sc50">){</span><span class="sc41">
+        </span><span class="sc46">n</span><span class="sc50">=</span><span class="sc46">parseInt</span><span class="sc50">(</span><span class="sc46">n</span><span class="sc50">,</span><span class="sc45">10</span><span class="sc50">);</span><span class="sc41">
+        </span><span class="sc47">if</span><span class="sc50">(</span><span class="sc46">isNaN</span><span class="sc50">(</span><span class="sc46">n</span><span class="sc50">))</span><span class="sc41"> </span><span class="sc47">return</span><span class="sc41"> </span><span class="sc48">"00"</span><span class="sc50">;</span><span class="sc41">
+        </span><span class="sc46">n</span><span class="sc50">=</span><span class="sc46">Math.max</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc46">Math.min</span><span class="sc50">(</span><span class="sc46">n</span><span class="sc50">,</span><span class="sc45">255</span><span class="sc50">));</span><span class="sc41">
+        </span><span class="sc47">return</span><span class="sc48">"0123456789ABCDEF"</span><span class="sc50">.</span><span class="sc46">charAt</span><span class="sc50">((</span><span class="sc46">n</span><span class="sc50">-</span><span class="sc46">n</span><span class="sc50">%</span><span class="sc45">16</span><span class="sc50">)/</span><span class="sc45">16</span><span class="sc50">)+</span><span class="sc48">"0123456789ABCDEF"</span><span class="sc50">.</span><span class="sc46">charAt</span><span class="sc50">(</span><span class="sc46">n</span><span class="sc50">%</span><span class="sc45">16</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+
+      </span><span class="sc47">function</span><span class="sc41"> </span><span class="sc46">getMousePos</span><span class="sc50">(</span><span class="sc46">canvas</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">evt</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+        </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">rect</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas.getBoundingClientRect</span><span class="sc50">();</span><span class="sc41">
+        </span><span class="sc47">return</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+          </span><span class="sc46">x</span><span class="sc50">:</span><span class="sc41"> </span><span class="sc46">evt.clientX</span><span class="sc41"> </span><span class="sc50">-</span><span class="sc41"> </span><span class="sc46">rect.left</span><span class="sc50">,</span><span class="sc41">
+          </span><span class="sc46">y</span><span class="sc50">:</span><span class="sc41"> </span><span class="sc46">evt.clientY</span><span class="sc41"> </span><span class="sc50">-</span><span class="sc41"> </span><span class="sc46">rect.top</span><span class="sc41">
+        </span><span class="sc50">};</span><span class="sc41">
+      </span><span class="sc50">}</span><span class="sc41">
+      
+      
+    </span><span class="sc46">canvas.addEventListener</span><span class="sc50">(</span><span class="sc49">'mousemove'</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc47">function</span><span class="sc50">(</span><span class="sc46">evt</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+        </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">mousePos</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">getMousePos</span><span class="sc50">(</span><span class="sc46">canvas</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">evt</span><span class="sc50">);</span><span class="sc41">
+            </span><span class="sc46">mousePosy</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">mousePos.y</span><span class="sc50">;</span><span class="sc41">
+            </span><span class="sc46">mousePosx</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">mousePos.x</span><span class="sc50">;</span><span class="sc41">
+      </span><span class="sc50">},</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">);</span><span class="sc41">
+        
+        </span><span class="sc46">canvas3.addEventListener</span><span class="sc50">(</span><span class="sc49">'mousemove'</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc47">function</span><span class="sc50">(</span><span class="sc46">evt</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+        </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">mousePos</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">getMousePos</span><span class="sc50">(</span><span class="sc46">canvas3</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">evt</span><span class="sc50">);</span><span class="sc41">
+             </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">imgData</span><span class="sc50">=</span><span class="sc46">ctx3.getImageData</span><span class="sc50">(</span><span class="sc46">mousePos.x</span><span class="sc50">,</span><span class="sc41"> </span><span class="sc46">mousePos.y</span><span class="sc50">,</span><span class="sc45">1</span><span class="sc50">,</span><span class="sc45">1</span><span class="sc50">).</span><span class="sc46">data</span><span class="sc50">;</span><span class="sc41">
+             </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">r</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">imgData</span><span class="sc50">[</span><span class="sc45">0</span><span class="sc50">];</span><span class="sc41">
+             </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">g</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">imgData</span><span class="sc50">[</span><span class="sc45">1</span><span class="sc50">];</span><span class="sc41">
+             </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">b</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">imgData</span><span class="sc50">[</span><span class="sc45">2</span><span class="sc50">];</span><span class="sc41">
+             </span><span class="sc46">canvas3.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc50">(){</span><span class="sc41">
+                </span><span class="sc46">red.value</span><span class="sc50">=</span><span class="sc46">r</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc46">green.value</span><span class="sc50">=</span><span class="sc46">g</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc46">blue.value</span><span class="sc50">=</span><span class="sc46">b</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc46">hex</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">rgbToHex</span><span class="sc50">(</span><span class="sc46">R</span><span class="sc50">,</span><span class="sc46">G</span><span class="sc50">,</span><span class="sc46">B</span><span class="sc50">);</span><span class="sc41">
+                </span><span class="sc46">color</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"#"</span><span class="sc50">+</span><span class="sc46">hex</span><span class="sc50">;</span><span class="sc41">
+             </span><span class="sc50">},</span><span class="sc47">false</span><span class="sc50">);</span><span class="sc41">
+      </span><span class="sc50">},</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">);</span><span class="sc41">
+        
+    </span><span class="sc46">canvas.addEventListener</span><span class="sc50">(</span><span class="sc49">'mousedown'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc43">//getImg();</span><span class="sc41">
+      </span><span class="sc46">clicking</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">true</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+
+     </span><span class="sc46">canvas.addEventListener</span><span class="sc50">(</span><span class="sc49">'mouseup'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc46">clicking</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+    </span><span class="sc46">eracer.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc46">draw</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">false</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+
+    </span><span class="sc46">pencil.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc46">draw</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc47">true</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+
+    </span><span class="sc46">clear.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc46">ctx.clearRect</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc46">canvas.width</span><span class="sc50">,</span><span class="sc46">canvas.height</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+
+    </span><span class="sc46">save.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+      </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">image</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">canvas.toDataURL</span><span class="sc50">(</span><span class="sc48">"image/png"</span><span class="sc50">);</span><span class="sc41">
+      </span><span class="sc46">document.write</span><span class="sc50">(</span><span class="sc49">'&lt;img src="'</span><span class="sc50">+</span><span class="sc46">image</span><span class="sc50">+</span><span class="sc49">'"/&gt;'</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+
+</span><span class="sc46">brush.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+     </span><span class="sc46">brushSize</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">parseInt</span><span class="sc50">(</span><span class="sc46">prompt</span><span class="sc50">(</span><span class="sc48">"Input brush radis"</span><span class="sc50">));</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+</span><span class="sc46">makeRef.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+     </span><span class="sc46">ctx4.clearRect</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc46">canvas4.width</span><span class="sc50">,</span><span class="sc46">canvas4.height</span><span class="sc50">);</span><span class="sc41">
+     </span><span class="sc46">ctx4.drawImage</span><span class="sc50">(</span><span class="sc46">canvas</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41">
+</span><span class="sc46">getRef.addEventListener</span><span class="sc50">(</span><span class="sc49">'click'</span><span class="sc50">,</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc50">(){</span><span class="sc41">
+     </span><span class="sc46">ctx.clearRect</span><span class="sc50">(</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc46">canvas.width</span><span class="sc50">,</span><span class="sc46">canvas.height</span><span class="sc50">);</span><span class="sc41">
+     </span><span class="sc46">ctx.drawImage</span><span class="sc50">(</span><span class="sc46">canvas4</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">,</span><span class="sc45">0</span><span class="sc50">);</span><span class="sc41">
+    </span><span class="sc50">});</span><span class="sc41"> 
+    </span><span class="sc46">canvas4.width</span><span class="sc50">=</span><span class="sc46">canvas.width</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">canvas4.height</span><span class="sc50">=</span><span class="sc46">canvas.height</span><span class="sc50">;</span><span class="sc41">
+    </span><span class="sc46">canvas4.style.display</span><span class="sc50">=</span><span class="sc48">"none"</span><span class="sc50">;</span><span class="sc41">
+    
+</span><span class="sc1">&lt;/script&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;/body&gt;</span><span class="sc0">
+</span><span class="sc1">&lt;/html&gt;</span><span class="sc0">
+</span></div></body>
+</html>
