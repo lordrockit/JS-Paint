@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<meta name="robots" content="noindex">
+<html>
+  <head>
+	<title>
+	  Js Paint by lordrockit
+	</title>
+	<style>
+	  body {
+	  text-align: center;
+		margin: 0px;
+		padding: 0px;
+	  }
+	</style>
+  </head>
+  <body style="text-align: center;">
+  <div style="background-color: #6076DE">
+  <h1>JS Paint</h1>
+  </div>
+  <table style="text-align: center;"><td 
+style="width: 40%;
+  text-align: center;
+  border: 1px solid #000000; height:100%; 
+  background-color: #ffffff; vertical-align: top;">
+  <div style="text-align: center">
+	<div style="background-color: #6076DE">
+	<h1>Tools</h1>
+	</div><br/><br/><br/>
+	Dimensions<br/>
+	width<input type="range" id="widthS" min="0" max="400" value="400"><input id="widthT"type="text"value
+="400"size="5"></input><br/>
+	height<input type="range" id="heightS" min="0" max="500" value="500"><input id="heightT" type="text"
+value="500"size="5"></input><br/>
+	<button id='write'>pencil</button><br/>
+	<button id='clear'>eraser</button><br/>
+	<button id='reset'>clear</button><br/>
+	<button id='save'>save</button><br/>
+	Brush size<input type="range"min="1"max="10"value="6"id='draw_size'></input><br/>
+	Brush:
+	<canvas id="colorPrev" width="10" height="10"
+style="border:0px solid #ffffff;">      
+</canvas><br/>
+	<button id='make_ref'>Make a referance point</button><br/>
+	<button id="get_ref">Go to last referance point</button><br/><br/><br/><br/>
+	<a href="about.html"><button>about this tool</button></a>
+	<a href="source.html"><button>source</button></a>
+	</div></td>
+	<td style=" width: 60%; height:100%; text-align: center; border: 1px solid #000000;
+	background-color: #ffffff;
+	vertical-align: top;">
+	<div style="background-color: #6076DE">
+	<h1>Draw</h1>
+	</div>
+	<canvas id="myCanvas" width="400" height="500"
+style="border:2px solid #000000;"></canvas>
+<br/></td>
+<td style=" width: 60%;  height:100%; text-align: center; border: 1px solid #000000; background-color: 
+#ffffff;
+ vertical-align: top;">
+<div style="background-color: #6076DE">
+<h1>Color Picker</h1>
+</div>
+<br/><br/><br/>
+<input type="range" id="red" min="0" max="255" value="0">red</input><br/>
+<input type="range" id="green" min="0" max="255" value="0">green</input><br/>
+<input type="range" id="blue" min="0" max="255" value="0">blue</input><br/>
+<input id="hexCode" type="text" value="hex">hexcode</input>
+<br/>
+<canvas id="colorPicker" width="400" height="100"
+style="border:1px solid #000000;"></canvas>
+</td>
+<canvas id="referance" width="400" height="100"
+style="border:1px solid #000000;"></canvas>
+  <script>
+  var mousePosx; 
+var mousePosy;
+var clicking = false;
+var draw = true;
+var brushSize = 6;
+var color = "#"+hex;
+var hex = "#FF0000";
+var pencil = document.getElementById('write');
+var eracer = document.getElementById('clear');
+var clear = document.getElementById('reset');
+var save = document.getElementById('save');
+var makeRef= document.getElementById('make_ref');
+var getRef = document.getElementById('get_ref');
+var hexC = document.getElementById('hexCode'); 
+var widthS = document.getElementById('widthS');
+var widthT = document.getElementById('widthT');
+var heightS = document.getElementById('heightS');
+var heightT = document.getElementById('heightT');
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+var canvas2 = document.getElementById('colorPrev');
+var ctx2 = canvas2.getContext('2d');
+var canvas3 = document.getElementById('colorPicker');
+var ctx3 = canvas3.getContext('2d');
+var canvas4 = document.getElementById('referance');
+var ctx4 = canvas4.getContext('2d');
+var red = document.getElementById('red');
+var green = document.getElementById('green');
+var blue = document.getElementById('blue');
+var grd=ctx3.createLinearGradient(0,0,400,0);
+grd.addColorStop(0,"black");
+grd.addColorStop(0.2,"red");
+grd.addColorStop(0.3,"orange");
+grd.addColorStop(0.4,"yellow");
+grd.addColorStop(0.5,"green");
+grd.addColorStop(0.6,"blue");
+grd.addColorStop(0.7,"indigo");
+grd.addColorStop(0.8,"violet");
+grd.addColorStop(1,"white");
+ctx3.fillStyle=grd;
+ctx3.fillRect(0,0,canvas3.width,canvas3.height);
+window.setInterval(function (){
+  canvas2.width=brushSize*2;
+  canvas2.height=brushSize*2;
+  ctx2.fillStyle = color;
+  ctx2.fillRect(0,0,brushSize*2,brushSize*2);
+  hex = rgbToHex(R,G,B);
+  color = "#"+hex;
+  hexC.value = color;
+  if(canvas.height != heightS.value || canvas.width != widthS.value){
+  canvas.width = widthS.value;
+  widthT.value=widthS.value;
+  canvas.height = heightS.value;
+  heightT.value=heightS.value;
+  }
+  if(clicking){
+	if(draw){
+	  ctx.fillStyle = color;
+	  ctx.fillRect(mousePosx-(brushSize*2),mousePosy-brushSize,brushSize*2,brushSize*2);
+	}else{
+	  ctx.clearRect(mousePosx-(brushSize*2),mousePosy-brushSize,brushSize*2,brushSize*2);
+	}
+  }
+},1);
+window.setInterval(function(){
+	R = document.getElementById('red').value;
+	G = document.getElementById('green').value;
+	B = document.getElementById('blue').value;
+	brushSize = document.getElementById('draw_size').value;
+	if(canvas4.height != canvas.height || canvas4.width != canavas.width){
+	canvas4.width=canvas.width;
+	canvas4.height=canvas.height;
+	canvas4.style.display="none";
+	}
+},1);
+	function rgbToHex(R,G,B){
+	return toHex(R)+toHex(G)+toHex(B);
+	}
+	function toHex(n){
+		n=parseInt(n,10);
+		if(isNaN(n)) return "00";
+		n=Math.max(0,Math.min(n,255));
+		return"0123456789ABCDEF".charAt((n-n%16)/16)+"0123456789ABCDEF".charAt(n%16);
+	}
+	  function getMousePos(canvas, evt) {
+		var rect = canvas.getBoundingClientRect();
+		return {
+		  x: evt.clientX - rect.left,
+		  y: evt.clientY - rect.top
+		};
+	  }
+	canvas.addEventListener('mousemove', function(evt) {
+		var mousePos = getMousePos(canvas, evt);
+			mousePosy = mousePos.y;
+			mousePosx = mousePos.x;
+	  }, false);
+		canvas3.addEventListener('mousemove', function(evt) {
+		var mousePos = getMousePos(canvas3, evt);
+			 var imgData=ctx3.getImageData(mousePos.x, mousePos.y,1,1).data;
+			 var r = imgData[0];
+			 var g = imgData[1];
+			 var b = imgData[2];
+			 canvas3.addEventListener('click',function(){
+				red.value=r;
+				green.value=g;
+				blue.value=b;
+				hex = rgbToHex(R,G,B);
+				color = "#"+hex;
+			 },false);
+	  }, false);
+	canvas.addEventListener('mousedown',function (){
+	  clicking = true;
+	});
+	 canvas.addEventListener('mouseup',function (){
+	  clicking = false;
+	});
+	eracer.addEventListener('click',function (){
+	  draw = false;
+	});
+	pencil.addEventListener('click',function (){
+	  draw = true;
+	});
+	clear.addEventListener('click',function (){
+	  ctx.clearRect(0,0,canvas.width,canvas.height);
+	});
+	save.addEventListener('click',function (){
+	  var image = canvas.toDataURL("image/png");
+	  document.write('<img src="'+image+'"/>');
+	});
+	makeRef.addEventListener('click',function (){
+	 ctx4.clearRect(0,0,canvas4.width,canvas4.height);
+	 ctx4.drawImage(canvas,0,0);
+	});
+	getRef.addEventListener('click',function (){
+	 ctx.clearRect(0,0,canvas.width,canvas.height);
+	 ctx.drawImage(canvas4,0,0);
+	});	
+	canvas4.width=canvas.width;
+	canvas4.height=canvas.height;
+	canvas4.style.display="none";
+  </script>
+</body>
+</html>
